@@ -1,4 +1,5 @@
 const {src, dest, series, parallel, watch} = require('gulp')
+const fibers = require('fibers')
 const sass = require('gulp-sass')
 const del = require('del')
 const imagemin = require('imagemin')
@@ -7,8 +8,11 @@ const source = require('vinyl-source-stream')
 const babelify = require('babelify')
 const browsersync = require('browser-sync')
 const postcss = require('gulp-postcss')
-const cssnext = require('postcss-cssnext')
-const importer = require('node-sass-package-importer')
+const importer = require('postcss-import')
+const autoprefixer = require('autoprefixer')
+const imageminJpeg = require('imagemin-mozjpeg')
+const imageminPng = require('imagemin-pngquant')
+sass.compiler = require('sass')
 
 const path = {
   src: './src/',
@@ -25,20 +29,15 @@ const html = () => {
 }
 
 const style = () => {
-  const borwser = [
-    cssnext({
-      browsers: 'last 2 version'
-    })
-  ]
-  return src(path.src + 'assets/styles/**/*.sass')
-    .pipe(sass({
-      importer: importer({
-        extensions: ['.sass', '.css']
-      }),
-      outputStyle: 'compressed'
-    }))
-    .pipe(postcss(borwser))
-    .pipe(dest(path.build + 'assets/styles/'))
+  return src(path.src + '/**/*.scss')
+    .pipe(
+      sass({
+        fibers: fibers,
+        style: 'compacted',
+      })
+    )
+    .pipe(postcss([autoprefixer(), importer({ path: ['node_modules'] })]))
+    .pipe(dest(path.build))
 }
 
 const script = () => {
@@ -50,7 +49,19 @@ const script = () => {
 }
 
 const image = () => {
-  return imagemin([path.src + 'assets/images/*'], path.build + 'assets/images/')
+  return src(path.src + '/**/*.{jpg,jpeg,png,gif,svg}')
+    .pipe(
+      imagemin([
+        imageminPng({
+          quality: [0.65, 0.8],
+          speed: 1,
+        }),
+        imageminJpeg({
+          quality: 80,
+        }),
+      ])
+    )
+    .pipe(dest(path.dist))
 }
 
 const sync = () => {
