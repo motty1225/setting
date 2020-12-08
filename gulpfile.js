@@ -29,11 +29,18 @@ const html = () => {
 }
 
 const style = () => {
+  let outPutStyle
+  if (process.env.NODE_ENV === 'develop') {
+    outPutStyle = 'compacted'
+  } else if (process.env.NODE_ENV === 'production') {
+    outPutStyle = 'compressed'
+  }
+
   return src(path.src + '/**/*.scss')
     .pipe(
       sass({
         fibers: fibers,
-        style: 'compacted',
+        style: outPutStyle,
       })
     )
     .pipe(postcss([autoprefixer(), importer({ path: ['node_modules'] })]))

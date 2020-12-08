@@ -4,6 +4,8 @@
   "description": "- 11/30 dart sassに変更",
   "main": "gulpfile.js",
   "scripts": {
+    "dev": "NODE_ENV='develop' gulp",
+    "build": "NODE_ENV='production' gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

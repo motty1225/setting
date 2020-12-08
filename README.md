@@ -1,4 +1,5 @@
 ## update
+- 12/09 sassのoutputstyleを環境変数で変更
 - 12/09 package.json追加
 - 11/30 dart sassに変更
 
