@@ -43,7 +43,7 @@ const style = () => {
         outputStyle: outputStyle,
       })
     )
-    .pipe(postcss([autoprefixer(), importer({ path: ['node_modules'] })]))
+    .pipe(postcss([autoprefixer({cascade: false}), importer({ path: ['node_modules'] })]))
     .pipe(dest(path.build))
 }
 
