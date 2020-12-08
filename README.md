@@ -1,5 +1,10 @@
-## gulp setting
+## update
+- 12/09 package.json追加
+- 11/30 dart sassに変更
 
+## gulp settings
+
+### module install
 ```
-npm i -D gulp gulp-sass del gulp-imagemin browserify vinyl-source-stream babelify browser-sync gulp-postcss fibers postcss-import autoprefixer imagemin-mozjpeg imagemin-pngquant sass @babel/core @babel/preset-env
+npm install
 ```

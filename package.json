@@ -1,0 +1,38 @@
+{
+  "name": "setting",
+  "version": "1.0.0",
+  "description": "- 11/30 dart sassに変更",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motty1225/setting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/motty1225/setting/issues"
+  },
+  "homepage": "https://github.com/motty1225/setting#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "autoprefixer": "^10.1.0",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.13",
+    "browserify": "^17.0.0",
+    "del": "^6.0.0",
+    "fibers": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^4.1.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.1",
+    "postcss-import": "^13.0.0",
+    "sass": "^1.30.0",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
