@@ -5,7 +5,27 @@
 
 ## gulp settings
 
-### module install
+node modules install
 ```
 npm install
+```
+
+### 開発用
+npm
+```
+npm run dev
+```
+yarn 
+```
+yarn dev
+```
+
+### 本番用
+npm
+```
+npm run build
+```
+yarn 
+```
+yarn build
 ```
